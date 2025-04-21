@@ -29,6 +29,10 @@ int main(int argc, char *argv[])
 	char hex_start[MAX_ARG_LEN];
 	char hex_end[MAX_ARG_LEN];
 	char filename[MAX_FILENAME];
+	
+	memset(hex_start, 0, MAX_ARG_LEN);
+	memset(hex_end, 0, MAX_ARG_LEN);
+	memset(filename, 0, MAX_FILENAME);
 
 	int arg_len = strlen(argv[1]);
 	if (arg_len > MAX_ARG_LEN) {
@@ -47,7 +51,7 @@ int main(int argc, char *argv[])
 	}
 
 	strncpy(hex_end, argv[2], arg_len);
-	hex_start[arg_len + 1] = '\0';
+	hex_end[arg_len + 1] = '\0';
 
 
 	arg_len = strlen(argv[3]);
@@ -57,7 +61,7 @@ int main(int argc, char *argv[])
 	}
 
 	strncpy(filename, argv[3], arg_len);
-	hex_start[arg_len + 1] = '\0';
+	filename[arg_len + 1] = '\0';
 
 	
 	/* Convert hex_start, hex_end to hex long integers */
@@ -84,6 +88,8 @@ int main(int argc, char *argv[])
 	}
 
 	/* Flush file if it already exists */
+	printf("%s\n", filename);
+	
 	FILE *check_file = fopen(filename, "w");
 	if (check_file == NULL) {
 		printf("ERROR: Could not open file.\n");
@@ -101,11 +107,12 @@ int main(int argc, char *argv[])
 	long int lines = 0;
 	while (start != end) {
 		fprintf(file, "\n%X", start);
-		printf("%X\n", start);
 		
 		start += count_direction;
 		lines++;
 	}
+
+	fprintf(file, "\n%X", end);
 
 	fclose(file);
 
