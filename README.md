@@ -39,18 +39,18 @@ export this into your .bashrc so you can use it in any directory.
 # How to use?
 ( This wasn't tested on Windows but I'm pretty sure it will work just the same. )
 
-This takes three arguments.\n
-
+This takes three arguments.<br>
+<br>
 ```
 hex-generate 0x0000 0x0010 output.txt
 ```
-\n
-Argument 1: The start hex value.\n
-Argument 2: The ending hex value.\n
-Argument 3: Filename to write to.\n
-(Warning) this calls ```fopen(filename, "w");```, so if you pass the name of a file\n
-that already exists in the current working directory, this program will overwrite the contents of said file.
-\n
+<br>
+Argument 1: The start hex value.<br>
+Argument 2: The ending hex value.<br>
+Argument 3: Filename to write to.<br>
+(Warning) this calls ```fopen(filename, "w");```, so if you pass the name of a file<br>
+that already exists in the current working directory, this program will overwrite the contents of said file.<br>
+<br>
 Basically, this is mostly self-explanatory.
 
 # Why did you make this?
